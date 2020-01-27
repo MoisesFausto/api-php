@@ -13,10 +13,12 @@
 		public $log;
 		public $token;
 		public $variaveis;
+		public $chave_token;
 
 		function __construct(){
 			$this->cnn = new Connection();
 			$this->log = array();
+			$this->variaveis->chave_token = 'SUA CHAVE FIXA PARA O TOKEN';
 		}
 
 		public function pegarVariaveis()
@@ -82,7 +84,7 @@
 
 		public function geraToken($debug = 0)
 		{
-			$t	= md5("ALESSONMARQUESDASILVA");
+			$t	= md5($this->variaveis->chave_token);
 			$b 	= array('ano' => (INT) date('Y'), 'mes' => (INT) date('m'), 'dia' => (INT) date('d'), 'hora' => (INT) date('H')/*, 'minuto' => (INT) date('i')*/);
 			$c 	= [];
 			$u	= [];
